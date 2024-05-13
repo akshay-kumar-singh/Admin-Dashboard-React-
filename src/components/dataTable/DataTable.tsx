@@ -18,23 +18,22 @@ const DataTable = (props: Props) => {
   // TEST THE API
 
   // const queryClient = useQueryClient();
-  // // const mutation = useMutation({
-  // //   mutationFn: (id: number) => {
-  // //     return fetch(`http://localhost:8800/api/${props.slug}/${id}`, {
-  // //       method: "delete",
-  // //     });
-  // //   },
-  // //   onSuccess: ()=>{
-  // //     queryClient.invalidateQueries([`all${props.slug}`]);
-  // //   }
-  // // });
-
-  const handleDelete = (id: number) => {
+  // const mutation = useMutation({
+  //   mutationFn: (id: number) => {
+  //     return fetch(`http://localhost:8800/api/${props.slug}/${id}`, {
+  //       method: "delete",
+  //     });
+  //   },
+  //   onSuccess: ()=>{
+  //     queryClient.invalidateQueries([`all${props.slug}`]);
+  //   }
+  // });
+  const handleDelete = () => {
     //delete the item
     // mutation.mutate(id)
   };
-
-  const actionColumn: GridColDef = {
+  
+  const actionColumn: GridColDef =  {
     field: "action",
     headerName: "Action",
     width: 200,
@@ -44,13 +43,15 @@ const DataTable = (props: Props) => {
           <Link to={`/${props.slug}/${params.row.id}`}>
             <img src="/view.svg" alt="" />
           </Link>
-          <div className="delete" onClick={() => handleDelete(params.row.id)}>
+          <div className="delete" onClick={handleDelete}>
             <img src="/delete.svg" alt="" />
           </div>
         </div>
       );
     },
   };
+  
+  
 
   return (
     <div className="dataTable">
